@@ -1,0 +1,10 @@
+databaseChangeLog:
+    - include:
+          file: migrations.yml
+    - changeSet:
+          id: 2.0
+          author: Brian Jackson
+          comment: Database version is now 1.0.0
+          changes:
+              - tagDatabase:
+                    tag: 1.0.0
