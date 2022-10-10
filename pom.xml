@@ -7,19 +7,83 @@
     <groupId>org.example</groupId>
     <artifactId>geolocation</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <dropwizard.version>2.1.2</dropwizard.version>
+        <dropwizard.JDBI.version>1.3.29</dropwizard.JDBI.version>
+        <mainClass>com.challenge.geolocation.configuration.GeoLocationConfiguration</mainClass>
     </properties>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/io.dropwizard/dropwizard-core -->
         <dependency>
             <groupId>io.dropwizard</groupId>
-            <artifactId>dropwizard-core</artifactId>
-            <version>2.1.2</version>
+            <artifactId>dropwizard-bom</artifactId>
+            <version>${dropwizard.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>7.0.0.jre8</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-hibernate</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-jdbi</artifactId>
+            <version>${dropwizard.JDBI.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-migrations</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.4.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.bazaarvoice.dropwizard/dropwizard-caching-bundle -->
+        <dependency>
+            <groupId>com.bazaarvoice.dropwizard</groupId>
+            <artifactId>dropwizard-caching-bundle</artifactId>
+            <version>2.0.5</version>
+        </dependency>
     </dependencies>
 </project>
