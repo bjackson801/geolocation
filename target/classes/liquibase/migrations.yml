@@ -1,0 +1,171 @@
+databaseChangeLog:
+- changeSet:
+    id: 1.0
+    author: Brian Jackson
+    comment: Create the GeoLocation table
+    changes:
+    - createTable:
+        tableName: geoLocation
+        columns:
+        - column:
+            name: id
+            type: bigint
+            autoIncrement: true
+            constraints:
+                primaryKey: true
+                primaryKeyName: PK_geoLocation
+                nullable: false`
+        - column:
+            name: status
+            type: varchar(10)
+            constraints:
+                nullable: true
+        - column:
+            name: message
+            type: varchar(255)
+            constraints:
+                nullable: true
+        - column:
+            name: continent
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: continentCode
+            type: varchar(2)
+            constraints:
+                nullable: true
+        - column:
+            name: country
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: countryCode
+            type: varchar(10)
+            constraints:
+                nullable: true
+        - column:
+            name: region
+            type: varchar(50)
+            constraints:
+                nullable: true
+        - column:
+            name: regionName
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: city
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: district
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: zip
+            type: varchar(25)
+            constraints:
+                nullable: true
+        - column:
+            name: lat
+            type: float
+            constraints:
+                nullable: true
+        - column:
+            name: lon
+            type: float
+            constraints:
+                nullable: true
+        - column:
+            name: timezone
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: offset
+            type: int
+            constraints:
+                nullable: true
+        - column:
+            name: currency
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: isp
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: org
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: serviceName
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: asname
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: reverse
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: mobile
+            type: bit
+            defaultValue: 0
+            constraints:
+                nullable: false
+        - column:
+            name: proxy
+            type: bit
+            defaultValue: 0
+            constraints:
+                nullable: false
+        - column:
+            name: hosting
+            type: bit
+            defaultValue: 0
+            constraints:
+                nullable: false
+        - column:
+            name: query
+            type: varchar(150)
+            constraints:
+                nullable: true
+        - column:
+            name: createDate
+            type: dateTime
+            constraints:
+                nullable: true
+        - column:
+            name: lastModifiedDate
+            type: dateTime
+            constraints:
+                nullable: true
+- changeSet:
+    id: 1.1
+    author: Brian Jackson
+    comment: "Add Unique constraint on the query column"
+    changes:
+    - addUniqueConstraint:
+        columnNames: query
+        constraintName: UC_GeoLocation_query
+        tableName: geoLocation
+        validate: true
+    - rollback:
+        dropUniqueConstraint:
+            tableName: geoLocation
+            constraintName: UC_GeoLocation_query
+
+
