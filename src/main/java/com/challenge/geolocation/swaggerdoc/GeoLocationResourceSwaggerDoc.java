@@ -1,4 +1,4 @@
-git//package com.challenge.geolocation.swaggerdoc;
+//package com.challenge.geolocation.swaggerdoc;
 //
 //import com.challenge.geolocation.entity.GeoLocationEntity;
 //import com.wordnik.swagger.annotations.ApiOperation;
